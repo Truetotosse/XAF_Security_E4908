@@ -1,0 +1,28 @@
+﻿@using DevExpress.ExpressApp
+@using DevExpress.ExpressApp.Security
+@using BlazorClientSideApplication
+
+
+@if(HasAccess) {
+	@ChildContent(!XpoHelper.Security.CanWrite(CurrentObject, PropertyName))
+}
+else {
+	@if(IsEditor) {
+		<DxTextBox @bind-Text=ProtectedContent ReadOnly=true></DxTextBox>
+	}
+	else {
+		@ProtectedContent
+	}
+}
+
+@code{
+	public string ProtectedContent = "*******";
+
+	[CascadingParameter] private IObjectSpace ObjectSpace { get; set; }
+	[Parameter] public object CurrentObject { get; set; }
+	[Parameter] public string PropertyName { get; set; }
+	[Parameter] public bool IsEditor { get; set; }
+	[Parameter] public RenderFragment<bool> ChildContent { get; set; }
+
+	private bool HasAccess => ObjectSpace.IsNewObject(CurrentObject) ? XpoHelper.Security.CanWrite(CurrentObject.GetType(), PropertyName) : XpoHelper.Security.CanRead(CurrentObject, PropertyName);
+}

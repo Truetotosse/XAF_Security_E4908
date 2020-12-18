@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+    <UseBlazorWebAssembly>true</UseBlazorWebAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <DxExtendStartupHost>False</DxExtendStartupHost>
+    <UserSecretsId>5365cfac-2043-4bd2-b12a-5f5fe97571db</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Blazor" Version="20.1.7" />
+    <PackageReference Include="devexpress.expressapp.security.xpo" Version="20.2.4" />
+    <PackageReference Include="devexpress.expressapp.validation" Version="20.2.4" />
+    <PackageReference Include="devexpress.persistent.baseimpl" Version="20.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0-preview.7.20365.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0-preview.7.20365.19" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0-preview.7.20364.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="XafSolution.Module.NetCore">
+      <HintPath>..\..\..\XafSolution\XafSolution.Module\bin_NetCore\netcoreapp3.1\XafSolution.Module.NetCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Core\Employees.xml" />
+  </ItemGroup>
+
+</Project>
