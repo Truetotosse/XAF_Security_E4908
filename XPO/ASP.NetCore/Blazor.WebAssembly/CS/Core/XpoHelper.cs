@@ -42,7 +42,7 @@ namespace BlazorClientSideApplication {
         }
         static void LogIn(string login, string password) {
             Authentication.SetLogonParameters(new AuthenticationStandardLogonParameters(login, password));
-            IObjectSpaceAsync loginObjectSpace = (IObjectSpaceAsync)ObjectSpaceProvider.CreateObjectSpace();
+            IObjectSpace loginObjectSpace = ObjectSpaceProvider.CreateObjectSpace();
             Security.Logon(loginObjectSpace);
         }
         
